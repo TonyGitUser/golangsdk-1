@@ -203,9 +203,9 @@ func v3AKSKAuth(client *gophercloud.ProviderClient, endpoint string, options gop
 		}
 
 		client.EndpointLocator = func(opts gophercloud.EndpointOpts) (string, error) {
-			return V3EndpointURL(&tokens3.ServiceCatalog{
+			return GetEndpointURLForAKSKAuth(&tokens3.ServiceCatalog{
 				Entries: entries,
-			}, opts)
+			}, opts,options)
 		}
 
 		return true, nil

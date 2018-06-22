@@ -1,7 +1,5 @@
 package gophercloud
 
-import "github.com/gophercloud/gophercloud/akskSigner"
-
 // AKSKAuthOptions presents the required information for AK/SK auth
 type AKSKAuthOptions struct {
 	// IdentityEndpoint specifies the HTTP endpoint that is required to work with
@@ -20,9 +18,10 @@ type AKSKAuthOptions struct {
 	Region string
 
 	// cloud service domain, example: myhwclouds.com
-	ServiceDomainName string
-	//  SignOptions represents the requried info of AK/SK auth
-	signer.SignOptions
+	Domain string
+
+	AccessKey           string //Access Key
+	SecretKey           string //Secret key
 }
 
 // Implements the method of AuthOptionsProvider

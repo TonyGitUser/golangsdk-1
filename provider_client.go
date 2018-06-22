@@ -224,7 +224,10 @@ func (client *ProviderClient) Request(method, url string, options *RequestOpts) 
 	prereqtok := req.Header.Get("X-Auth-Token")
 
 	if client.AKSKAuthOptions.AccessKey != "" {
-		signer.Sign(req, client.AKSKAuthOptions.SignOptions)
+		signer.Sign(req, signer.SignOptions{
+			AccessKey:client.AKSKAuthOptions.AccessKey,
+			SecretKey:client.AKSKAuthOptions.SecretKey,
+		})
 	}
 
 	// Issue the request.

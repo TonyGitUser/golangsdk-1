@@ -24,6 +24,17 @@ specified like so:
 
   provider, err := openstack.AuthenticatedClient(opts)
 
+You can also use AK/SK authentication to construct provider:
+
+	signOptions := gophercloud.AKSKAuthOptions{
+		IdentityEndpoint: "https://openstack.example.com:5000/v2.0",
+		ProjectId:        "{projectId}",
+		AccessKey:        "{accKey}",
+		SecretKey:        "{secretKey}",
+		Domain:           "myhuaweicloud.com",
+	}
+	provider, err := openstack.AuthenticatedClient(signOptions)
+
 You may also use the openstack.AuthOptionsFromEnv() helper function. This
 function reads in standard environment variables frequently found in an
 OpenStack `openrc` file. Again note that Gophercloud currently uses "tenant"
